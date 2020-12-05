@@ -11,6 +11,7 @@ class Diamond {
   PShape[] layer5b = new PShape[8];
   PShape[] layer6 = new PShape[8];
   
+  //radii of each layer:
   float r1 = 45;
   float r2 = 60;
   float r3 = 70;
@@ -59,6 +60,8 @@ class Diamond {
 
   Diamond() {
     
+    //set all the vertices of the diamond shape:
+    
     angle = 0;
     for(int n=0;n<8;n++) {
       radius1_x[n] = r1*cos(angle);
@@ -94,6 +97,8 @@ class Diamond {
       angle+=PI/4;
     }
     
+    //create the shape of the top face of the diamond:
+    
     layer1 = createShape();
     layer1.beginShape();
     layer1.fill(h,s,b,alpha);
@@ -104,6 +109,8 @@ class Diamond {
       layer1.vertex(radius1_x[n],radius1_y[n],r1_z);
     }
     layer1.endShape(CLOSE);
+    
+    //create the shapes for the rest of the diamond:
     
     for(int n=0;n<8;n++) {
       if(n==7) {
@@ -226,6 +233,7 @@ class Diamond {
 
   }
   
+  //method for displaying the diamond:
   void display() {
     shape(layer1);
     for(int n=0;n<8;n++) {
