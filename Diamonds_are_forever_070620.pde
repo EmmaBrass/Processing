@@ -3,7 +3,7 @@
 
 Diamond dia;
 
-int no_rc = 5;
+int no_rc = 5;  // number of rows & columns of diamonds
 int space = 200;
 
 int[] ipos_x = new int[no_rc];
@@ -20,8 +20,8 @@ float[][] rot = new float[no_rc][no_rc];
 float radius;
 float angle;
 
-PVector[][] direction = new PVector[no_rc][no_rc];
-PVector[][] location = new PVector[no_rc][no_rc];
+PVector[][] direction = new PVector[no_rc][no_rc];    //2D array of vectors for the directions of each diamond
+PVector[][] location = new PVector[no_rc][no_rc];     //2D array of vectors for the locations of each diamond
 
 int n;
 int m;
@@ -34,7 +34,7 @@ int xdiv = 30;
 int ydiv = 30;
 int zdiv = 30;
 
-void setup() {
+void setup() {      //runs once
   size(800,800,P3D);
   hint(DISABLE_DEPTH_MASK);
   frameRate(30);
@@ -84,6 +84,8 @@ void draw() {
   directionalLight(0, 0, 100, -1, -1, -1);
   ambientLight(0, 0, 100);
   
+  //display the diamonds:
+  
   translate(-2,-2,-2);
   for(int n=0;n<no_rc;n++) {
     for(int m=0;m<no_rc;m++) {
@@ -98,9 +100,8 @@ void draw() {
       rot[n][m]+=1.5;
     }
   }
-  
-  
 
+  //update the locations of the diamonds:
   
   if(n<no_rc & m<no_rc) {
     if(location[n][m].z > fpos_z[n]) {
@@ -119,8 +120,8 @@ void draw() {
     if(num<300) {
     for(int n=0;n<no_rc;n++) {
       for(int m=0;m<no_rc;m++) {
-        location[n][m].x -= (direction[n][m].x)/480;             //higher number = smaller step = longer to middle
-        location[n][m].y -= ((direction[n][m].y)/300) - 0.3;        //smaller number = bigger step = faster to middle
+        location[n][m].x -= (direction[n][m].x)/480;             
+        location[n][m].y -= ((direction[n][m].y)/300) - 0.3;      
         location[n][m].z -= ( direction[n][m].z)/420; 
       }
     }
@@ -131,15 +132,17 @@ void draw() {
   if (num>= 300) {
     for(int n=0;n<no_rc;n++) {
       for(int m=0;m<no_rc;m++) {
-        location[n][m].x += ((direction[n][m].x)/70) +0.5;     //higher number = goes slower in that direction
-        location[n][m].y += ((direction[n][m].y)/45) - 1.75;   //more negative = higher up
+        location[n][m].x += ((direction[n][m].x)/70) +0.5;     
+        location[n][m].y += ((direction[n][m].y)/45) - 1.75;  
         location[n][m].z += ( direction[n][m].z)/60; 
         
       } 
     }
 
   }
+ 
+  //save the resulting image as a png file:
   
-  saveFrame("output3/####.png");
+  saveFrame("output/####.png");
 
 }
