@@ -1,7 +1,7 @@
 //Main file for creating the animation
 //Author: Emma Brass
 
-Diamond dia;
+Diamond dia;  //see other file for the Diamond class
 
 int no_rc = 5;  // number of rows & columns of diamonds
 int space = 200;
