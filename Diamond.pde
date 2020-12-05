@@ -1,3 +1,4 @@
+//class for a Diamond object 
 
 class Diamond {
   
