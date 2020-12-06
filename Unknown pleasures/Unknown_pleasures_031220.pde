@@ -105,21 +105,33 @@ void draw() {  //iterates continuously, for animation
 }
 
 
+void muChange() {  //shifts the mu value of each normal distribution
+    for (int i=0; i<nLines; i++) {
+      for (int j=0; j<nModes[i]; j++) {
+        current = mus_changeable[i].get(j);
+        change = mus_change[i].get(j);
+        if ( (current >= xMid+45) || (current <= xMid-45) ) {    //When mu hits a certain upper or lower limit, the direction of change switches
+          change *= -1;
+          mus_change[i].set(j, change);
+        }
+        new_val = current + change;
+        mus_changeable[i].set(j, new_val);
+      }
+    }   
+}
+
+
 void yReset() {  //changes y values of all the point, via a change in amplitude and a change in the mu values
-  
   if(amplitude > 440 || amplitude < 100) {
     ampChange *= -1;
   }
-  
   amplitude += ampChange;
-  
   for (int i = 0; i < nLines; i++) {   // i = line number
     for (int j = 0; j < nPoints; j++) {    // j = point number
       float yval = yMin + (dy*i) - amplitude*sumPDF(i,xValues[i][j]);
-      yValues[i][j] = yval + (yValRan[i][j] * (((yMin + dy*i) - yval) + 5) * 0.18);   // y2 with some randomness for the line wobble
+      yValues[i][j] = yval + (yValRan[i][j] * (((yMin + dy*i) - yval) + 5) * 0.18);   
     }
   }  
-  
 }
 
 
@@ -142,20 +154,5 @@ float sumPDF(int LineNo, float xvalue) {  //sum of normal distributions that con
 
 
 
-void muChange() {  //shifts the mu value of each normal distribution
 
-    for (int i=0; i<nLines; i++) {
-      for (int j=0; j<nModes[i]; j++) {
-        current = mus_changeable[i].get(j);
-        change = mus_change[i].get(j);
-        if ( (current >= xMid+45) || (current <= xMid-45) ) {    //When mu hits a certain upper or lower limit, the direction of change switches
-          change *= -1;
-          mus_change[i].set(j, change);
-        }
-        new_val = current + change;
-        mus_changeable[i].set(j, new_val);
-      }
-  }
-  
-}
   
