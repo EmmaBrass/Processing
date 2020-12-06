@@ -1,4 +1,5 @@
 //class for a Diamond object 
+//Author: Emma Brass
 
 class Diamond {
   
