@@ -1,5 +1,6 @@
 //Processing program for an animated version of Joy Division's 1979 album Unknown Pleasures
 //Creates a series of png images that must be combined to create a movie
+//Author: Emma Brass
 
 int xMin = 250;
 int xMax = 550;
