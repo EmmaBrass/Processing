@@ -1,3 +1,5 @@
+//Main file for creating the animation
+//Author: Emma Brass
 
 Shape[] blobs = new Shape[7];
 
