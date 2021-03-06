@@ -1,3 +1,6 @@
+// Program to move pixels in a straight line, to swtich from one image to another
+// Author: Emma Brass
+
 PImage beach;
 
 PImage shells_one;
