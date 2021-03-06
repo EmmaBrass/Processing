@@ -1,3 +1,4 @@
+// Class for the metaball object
 
 class Shape {
   
